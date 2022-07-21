@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteStatement;
 import android.os.Bundle;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
@@ -22,6 +23,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         listView = findViewById(R.id.listaDados);
         criarBancoDados();
+        InserirDados();
         listarDados();
     }
 
@@ -40,6 +42,25 @@ public class MainActivity extends AppCompatActivity {
             e.printStackTrace();
         }
     }
+
+    private void InserirDados() {
+        try {
+            bancoDados = openOrCreateDatabase("CrudApp", MODE_PRIVATE, null);
+            String sql = "INSERT INTO pessoas (nome) VALUES(?)";
+            SQLiteStatement statement = bancoDados.compileStatement(sql);
+            statement.bindString(1, "Pessoa 1");
+            statement.executeInsert();
+            statement.bindString(1, "Pessoa 2");
+            statement.executeInsert();
+            statement.bindString(1, "Pessoa 3");
+            statement.executeInsert();
+            bancoDados.close();
+    }catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+
+
 
     private void listarDados() {
         try {
