@@ -4,22 +4,47 @@ import java.io.Serializable;
 
 public class Pessoa implements Serializable {
     private String nome;
-    private String apelido;
+
     private String provincia;
     private String sexo;
     private String deficiencia;
     private  int idade;
     double altura , peso;
 
-    public Pessoa(String nome, String apelido, String provincia, String sexo, String deficiencia, int idade, double altura, double peso) {
+    @Override
+    public String toString() {
+        return "Pessoa{" +
+                "nome='" + nome + '\'' +
+                ", provincia='" + provincia + '\'' +
+                ", sexo='" + sexo + '\'' +
+                ", deficiencia='" + deficiencia + '\'' +
+                ", idade=" + idade +
+                ", altura=" + altura +
+                ", peso=" + peso +
+                ", PessoaImageId=" + PessoaImageId +
+                '}';
+    }
+
+    public int getPessoaImageId() {
+        return PessoaImageId;
+    }
+
+    public void setPessoaImageId(int pessoaImageId) {
+        PessoaImageId = pessoaImageId;
+    }
+
+    private int PessoaImageId;
+
+    public Pessoa(String nome,int PessoaImageId,  String provincia, String sexo, String deficiencia, int idade, double altura, double peso) {
         this.nome = nome;
-        this.apelido = apelido;
+
         this.provincia = provincia;
         this.sexo = sexo;
         this.deficiencia = deficiencia;
         this.idade = idade;
         this.altura = altura;
         this.peso = peso;
+        this.PessoaImageId =  PessoaImageId;
     }
 
     public String getNome() {
@@ -28,14 +53,6 @@ public class Pessoa implements Serializable {
 
     public void setNome(String nome) {
         this.nome = nome;
-    }
-
-    public String getApelido() {
-        return apelido;
-    }
-
-    public void setApelido(String apelido) {
-        this.apelido = apelido;
     }
 
     public String getProvincia() {
@@ -87,18 +104,4 @@ public class Pessoa implements Serializable {
     }
 
 
-
-    @Override
-    public String toString() {
-        return "Pessoa{" +
-                "nome='" + nome + '\'' +
-                ", apelido='" + apelido + '\'' +
-                ", provincia='" + provincia + '\'' +
-                ", sexo='" + sexo + '\'' +
-                ", deficiencia='" + deficiencia + '\'' +
-                ", idade=" + idade +
-                ", altura=" + altura +
-                ", peso=" + peso +
-                '}';
-    }
 }
