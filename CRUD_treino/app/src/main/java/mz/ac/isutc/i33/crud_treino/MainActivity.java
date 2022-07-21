@@ -45,14 +45,20 @@ public class MainActivity extends AppCompatActivity {
 
     private void InserirDados() {
         try {
+            String p1 ="Mário Jambo";
+            String p2 ="Evans Jambo";
+            String p3 ="Maria Jambo";
+
             bancoDados = openOrCreateDatabase("CrudApp", MODE_PRIVATE, null);
             String sql = "INSERT INTO pessoas (nome) VALUES(?)";
             SQLiteStatement statement = bancoDados.compileStatement(sql);
-            statement.bindString(1, "Pessoa 1");
+            statement.bindString(1, p2);
             statement.executeInsert();
-            statement.bindString(1, "Pessoa 2");
+            statement.bindString(1, p3);
             statement.executeInsert();
-            statement.bindString(1, "Pessoa 3");
+            statement.bindString(1, "Pessoa xyz");
+            statement.executeInsert();
+            statement.bindString(1, p1);
             statement.executeInsert();
             bancoDados.close();
     }catch (Exception e){
